@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stocks Website</title>
+
+  <!-- Caleb Mostyn-->
+  <!-- CSE 383 Section C -->
+  <!-- Kurt Johnson -->
+  <!-- Final Project -->
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid" id="navbar">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="stocks.html">Stocks</a>
+          <a class="nav-link active" aria-current="page" href="">Favorites</a>
+          <a class="nav-link" href="caleb.html">Caleb</a>
+        </div>
+      </div>
+      <form class="form-inline justify-content-end">
+        <button type="button" class="btn btn-success mr-2 hiddenContainer" id="login" data-bs-toggle="modal"
+          data-bs-target="#loginModal">Login</button>
+        <button type="button" class="btn btn-secondary hiddenContainer" id="signUp" data-bs-toggle="modal"
+          data-bs-target="#signUpModal">Sign-Up</button>
+        <button class="btn btn-danger  hiddenContainer" type="button" id="logout" onclick="logoutUser()">Logout</button>
+      </form>
+    </div>
+  </nav>
+
+
+
+
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="loginLabel">Login</h1>
+          <button type="button" class="btn-close closebtn" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Alert -->
+          <div id="logoutAlert" class="hiddenContainer"></div>
+          <form id="loginForm" method="post" onsubmit="loginUser(); return false">
+            <div id="accountCreation"></div>
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div id="error"></div>
+          </form>
+        </div>
+
+
+        <div class="modal-footer">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <button type="button" class="btn btn-outline-secondary" onclick="window.location.href = 'index.html';"
+              id="home">Home</button>
+            <div>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                data-bs-target="#signUpModal">Sign-Up</button>
+              <button type="submit" class="btn btn-success" form="loginForm">Login</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign-Up Modal -->
+  <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="signUpLabel">Sign-Up</h1>
+          <button type="button" class="btn-close closebtn" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="signUpForm" method="post" onsubmit="signUpUser(); return false">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div id="error"></div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <button type="button" class="btn btn-outline-secondary" onclick="window.location.href = 'index.html';"
+              id="home">Home</button>
+            <div>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                data-bs-target="#loginModal">Login</button>
+              <button type="submit" class="btn btn-success" form="signUpForm">Sign-Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row fill-height">
+      <!-- Left container -->
+      <div class="col-md-4 order-md-1">
+        <!-- Content for left container -->
+        <div class="outlined-container">
+          <form method="post" onsubmit="getHistory(); return false" id="historyForm">
+            <div class="form-group">
+              <label>History:</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio" id="exampleRadio1" value="all_changes" required>
+                <label class="form-check-label" for="exampleRadio1">All Changes</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio" id="exampleRadio2" value="added" required>
+                <label class="form-check-label" for="exampleRadio2">Added</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio" id="exampleRadio3" value="removed" required>
+                <label class="form-check-label" for="exampleRadio3">Removed</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio" id="exampleRadio4" value="list" required>
+                <label class="form-check-label" for="exampleRadio4">List</label>
+              </div>
+            </div>
+  
+            <div class="form-group" style="display: none; margin-bottom: 5px; ">
+              <label for="startDate">Start Date:</label>
+              <input id="startDate" class="form-control" type="date"></input>
+            </div>
+            <div class="form-group" style="display: none; margin-bottom: 5px;">
+              <label for="endDate">End Date:</label>
+              <input id="endDate" class="form-control" type="date"></input>
+            </div>
+            <div class="form-group" style="display: none; margin-bottom: 5px;">
+              <label for="date">Date:</label>
+              <input id="date" class="form-control" type="date"></input>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-secondary" onclick="refreshDates();">Clear</button>
+          </form>
+        </div>
+        <div class="outlined-container">
+          <img src="stocks.jpg" class="full-width rounded-image" alt="Stocks Photo">
+        </div>
+      </div>
+
+      <!-- Right container -->
+      <div class="col-md-8 order-md-2">
+        <div class="outlined-container hiddenContainer" id="sort">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-10">
+                <label for="favorites" class="col-form-label" id="historyLabel"></label>
+              </div>
+              <div class="col-1 d-none d-sm-block"></div>
+              <div class="col-1">
+                <button type="button" class="btn btn-light" style="width: fit-content; height: fit-content"
+                  onclick="flipSort('#results'); $(this).find('img').toggleClass('flipped-image');"><img
+                    src="redtriangle.png" class="grayscale-image" height=15px width=15px></img>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hiddenContainer outlined-container" id="results"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      fetchApiKey();
+      refreshButtons();
+      $('.modal').attr('data-bs-backdrop', 'static').attr('data-bs-keyboard', 'false');
+      if (!loggedIn()) {
+        $(".closebtn").hide();
+        $('#loginModal').modal('show');
+      }
+
+      // Set max date
+      $('input[type=date]').attr('max', new Date().toISOString().split("T")[0]);
+
+      $('input[name=radio]').on('change', function () {
+        var selectedValue = $(this).val();
+
+        // Hide all form elements
+        $('input[type=date]').parent().hide();
+        refreshDates();
+
+
+
+
+        if (selectedValue == "list") {
+          // Show the form elements corresponding to the selected radio button
+          $('#date').parent().show();
+        } else {
+          $('#startDate').parent().show();
+          $('#endDate').parent().show();
+        }
+      });
+      $('input[type=date]').on('change', function () {
+        if ($("#endDate").val != '') {
+          $("#startDate").attr("max", $("#endDate").val());
+        }
+        if ($("#startDate").val != '') {
+          $("#endDate").attr("min", $("#startDate").val());
+        }
+      });
+
+      // Get all modals
+      var modals = document.querySelectorAll('.modal');
+
+      // Add event listener to each modal
+      modals.forEach(function (modal) {
+        modal.addEventListener('hidden.bs.modal', function () {
+          // Reset form elements in the modal
+          var form = modal.querySelector('form');
+          form.reset();
+
+          // Clear error and accountCreation divs
+          var errorDiv = modal.querySelector('#error');
+          if (errorDiv) {
+            errorDiv.innerHTML = "";
+          }
+
+          var accountCreationDiv = modal.querySelector('#accountCreation');
+          if (accountCreationDiv) {
+            accountCreationDiv.innerHTML = "";
+          }
+        });
+      });
+
+    });
+  </script>
+
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

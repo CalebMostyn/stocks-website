@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stocks Website</title>
+
+  <!-- Caleb Mostyn-->
+  <!-- CSE 383 Section C -->
+  <!-- Kurt Johnson -->
+  <!-- Final Project -->
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid" id="navbar">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="">Home</a>
+          <a class="nav-link" href="stocks.html">Stocks</a>
+          <a class="nav-link" href="favorites.html">Favorites</a>
+          <a class="nav-link" href="caleb.html">Caleb</a>
+        </div>
+      </div>
+      <form class="form-inline justify-content-end">
+        <button type="button" class="btn btn-success mr-2 hiddenContainer" id="login" data-bs-toggle="modal"
+          data-bs-target="#loginModal">Login</button>
+        <button type="button" class="btn btn-secondary hiddenContainer" id="signUp" data-bs-toggle="modal"
+          data-bs-target="#signUpModal">Sign-Up</button>
+        <button class="btn btn-danger  hiddenContainer" type="button" id="logout" onclick="logoutUser()">Logout</button>
+      </form>
+    </div>
+  </nav>
+
+
+
+
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="loginLabel">Login</h1>
+          <button type="button" class="btn-close closebtn" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Alert -->
+          <div id="logoutAlert" class="hiddenContainer"></div>
+          <form id="loginForm" method="post" onsubmit="loginUser(); return false">
+            <div id="accountCreation"></div>
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div id="error"></div>
+          </form>
+        </div>
+
+
+        <div class="modal-footer">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <button type="button" class="btn btn-outline-secondary" onclick="window.location.href = 'index.html';"
+              id="home">Home</button>
+            <div>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                data-bs-target="#signUpModal">Sign-Up</button>
+              <button type="submit" class="btn btn-success" form="loginForm">Login</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign-Up Modal -->
+  <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="signUpLabel">Sign-Up</h1>
+          <button type="button" class="btn-close closebtn" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="signUpForm" method="post" onsubmit="signUpUser(); return false">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div id="error"></div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <button type="button" class="btn btn-outline-secondary" onclick="window.location.href = 'index.html';"
+              id="home">Home</button>
+            <div>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                data-bs-target="#loginModal">Login</button>
+              <button type="submit" class="btn btn-success" form="signUpForm">Sign-Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="outlined-container">
+    <h1>Stocks Website</h1>
+  </div>
+  
+  <div class="outlined-container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <div class="outlined-container">
+          <img src="stocks-website.png" class="rounded-image img-fluid" alt="Stocks Page Photo">
+        </div>
+      </div>
+  
+  </div>
+  
+    <div class="row justify-content-center">
+            <div class="outlined-container" style="width: 90%">
+                <p>
+                    Welcome to the landing page of our final project for CSE 383. In the navigation bar, you will see options for this page, Stocks, Favorites, and personal pages for the two developers. In addition, there should be options to log in or sign up, or log out if you have already done so. <br><br>
+                    Viewing the Stocks page, pictured above, or the Favorites page, requires a login. <br><br>
+                    The Stocks page will allow you to select one of many stock exchanges through a dropdown menu. You can then press the "Get Stocks" button, which will provide you with another dropdown menu with all the stocks for the selected exchange. The selected stock will be displayed, showing statistics for the last five days, including the stock's open, high, low, close, difference, and volume for a given day. A graph using the close data is also shown. Below that, the five most recent articles about the stock are displayed below the graph. Clicking one of the articles will pop up a menu displaying the headline, an image, the first sentence, and publishing information, as well as a button that opens the full article in a new tab. <br><br>
+                    While a stock is selected, you can also add it to your Favorites with a button press. Your favorite stocks are shown on the left side of the Stocks page with the latest data, and can be displayed at any time by clicking on them. There is also a button to remove a favorite in the box for each favorite. <br><br>
+                    The Favorites page will allow you to view the history of your favorites, letting you view all changes at once or additions and removals separately. You can also filter this history by start and end date. Additionally, you can view a list of your favorites on a given day, defaulting to the current day. <br><br>
+                    The developer pages provide an image and a short bio for each of the developers, respectively.<br><br>
+                    Developed by Caleb Mostyn for CSE 383 in Spring 2024.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+  
+
+
+  <script>
+    $(document).ready(function () {
+      fetchApiKey();
+      refreshButtons();
+      var modals = document.querySelectorAll('.modal');
+
+      // Get all modals
+      var modals = document.querySelectorAll('.modal');
+
+      // Add event listener to each modal
+      modals.forEach(function (modal) {
+        modal.addEventListener('hidden.bs.modal', function () {
+          // Reset form elements in the modal
+          var form = modal.querySelector('form');
+          form.reset();
+
+          // Clear error and accountCreation divs
+          var errorDiv = modal.querySelector('#error');
+          if (errorDiv) {
+            errorDiv.innerHTML = "";
+          }
+
+          var accountCreationDiv = modal.querySelector('#accountCreation');
+          if (accountCreationDiv) {
+            accountCreationDiv.innerHTML = "";
+          }
+        });
+      });
+
+    });
+  </script>
+
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

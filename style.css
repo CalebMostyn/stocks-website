@@ -1,0 +1,130 @@
+.hiddenContainer {
+    display: none;
+}
+
+.visibleContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#favorites>div:hover {
+    background-color: rgb(190,237,190);
+}
+
+#news>div:hover {
+    background-color: rgb(190,237,190);
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    height: 89vh;
+    /* Set a fixed height for the container */
+    overflow: hidden;
+    /* Hide overflow on the page */
+}
+
+.left-container {
+    flex-grow: 0;
+    /* Don't grow beyond the specified width */
+    flex-shrink: 1;
+    /* Allow shrinking if needed */
+    flex-basis: 400px;
+    /* Static width of 200px */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    height: 100%;
+    /* Fill the available height */
+    padding: 10px;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Take remaining space */
+    padding: 10px;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    height: 100%;
+    /* Fill the available height */
+    max-height: 89vh;
+    /* Limit the maximum height */
+}
+
+canvas {
+    width:100%;
+    max-width:700px
+}
+
+.outlined-container {
+    outline-style: solid;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+#favorites > div, #news > div, #details > div, #results > div {
+    background-color: rgb(200,247,200);
+}
+
+.full-width {
+    width: 100%;
+}
+
+#error {
+    display: none;
+    color: red;
+}
+
+#accountCreation {
+    display: none;
+    color: green;
+}
+
+.grayscale-image {
+    filter: grayscale(100%);
+}
+
+.flipped-image {
+    transform: scaleY(-1);
+}
+
+.rounded-image {
+    height: auto;
+    border-radius: 15px;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: rgb(195, 195, 195);
+}
+
+
+.navbar-custom {
+    background-color: darkslateblue;
+    border-radius: 15px;
+    margin: 10px;
+    outline-style: solid;
+    outline-color: black;
+}
+
+.nav-link {
+    color: white;
+}
+
+.date-div {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.fill-height {
+    height: 100vh;
+}
