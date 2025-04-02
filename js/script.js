@@ -1,6 +1,5 @@
 var openstackDomain = "caleb-mostyn.com";
-//var URL = "http://" + openstackDomain + "/cse383_final/final.php";
-var URL = "final.php"
+var URL = "php/final.php"
 var NUM_ARTICLES = 5;
 var API_URL = "https://api.polygon.io";
 var API_KEY = null;
@@ -8,7 +7,7 @@ var API_KEY_2 = null;
 
 function fetchApiKey() {
     return $.ajax({
-        url: "fetchApiKey.php",
+        url: "php/fetchApiKey.php",
         method: "GET"
     }).done(function (response) {
         API_KEY = response['API_KEY_1'];
@@ -310,7 +309,7 @@ function displayFavorites() {
         <div class="col-1">
             <button type="button" class="btn btn-light hiddenContainer" id="sort" style="width: fit-content; height: fit-content"
                 onclick="flipSort('#favorites'); $(this).find('img').toggleClass('flipped-image');">
-                <img src="redtriangle.png" class="grayscale-image" height="15px" width="15px">
+                <img src="resources/redtriangle.png" class="grayscale-image" height="15px" width="15px">
             </button>
         </div>
     </div>
@@ -626,7 +625,7 @@ function displayFavoriteDetails(ticker) {
         High: $${details.h} <br>
         Low: $${details.l} <br>
         Close: $${details.c} <br>
-        Difference: ${diff}% <img src="` + (diff >= 0 ? `greentriangle.png` : `redtriangle.png`) + `" height=15px width=15px> <br> 
+        Difference: ${diff}% <img src="` + (diff >= 0 ? `resources/greentriangle.png` : `resources/redtriangle.png`) + `" height=15px width=15px> <br> 
         Volume: ${details.v}`);
     }, time);
 
@@ -732,7 +731,7 @@ function selectedDetails(ticker) {
                             High: $${data.results[i].h} <br>
                             Low: $${data.results[i].l} <br>
                             Close: $${data.results[i].c} <br>
-                            Difference: ${diff}% <img src="` + (diff >= 0 ? `greentriangle.png` : `redtriangle.png`) + `" height=15px width=15px> <br> 
+                            Difference: ${diff}% <img src="` + (diff >= 0 ? `resources/greentriangle.png` : `resources/redtriangle.png`) + `" height=15px width=15px> <br> 
                             Volume: ${data.results[i].v}</div>`);
                         if (date.getDay() == 5) {
                             date.setDate(date.getDate() + 3);
@@ -775,7 +774,7 @@ function selectedDetails(ticker) {
                 High: $${details.results[i].h} <br>
                 Low: $${details.results[i].l} <br>
                 Close: $${details.results[i].c} <br>
-                Difference: ${diff}% <img src="` + (diff >= 0 ? `greentriangle.png` : `redtriangle.png`) + `" height=15px width=15px> <br> 
+                Difference: ${diff}% <img src="` + (diff >= 0 ? `resources/greentriangle.png` : `resources/redtriangle.png`) + `" height=15px width=15px> <br> 
                 Volume: ${details.results[i].v}</div>`);
             if (date.getDay() == 5) {
                 date.setDate(date.getDate() + 3);
